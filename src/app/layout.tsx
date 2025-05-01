@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     description:
       "Modern, fast, and secure cloud storage for your images. Upload and share in seconds.",
   },
-  metadataBase: new URL("https://snapvault.vercel.app"),
+  metadataBase: new URL("https://snapvault-vercel.vercel.app/"),
 };
 
 export default function RootLayout({
