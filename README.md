@@ -1,36 +1,86 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SnapVault 🚀
 
-## Getting Started
+![SnapVault Screenshot](https://hshbrs4fj4e0u45f.public.blob.vercel-storage.com/image_1746341200858.png)
 
-First, run the development server:
+[![CI](https://github.com/shivanshu814/SnapVault-Vercel-Blob/actions/workflows/ci.yml/badge.svg)](https://github.com/shivanshu814/SnapVault-Vercel-Blob/actions/workflows/ci.yml)
+
+**SnapVault** is a modern, fast, and secure cloud storage platform for your images. Instantly upload, store, and share images with CDN-powered delivery and a beautiful UI. Built with Next.js, Vercel Blob Storage, and ❤️ by [shivanshu814](https://github.com/shivanshu814).
+
+🌐 **Live:** [https://snapvault-vercel.vercel.app/](https://snapvault-vercel.vercel.app/)
+
+---
+
+## ✨ Features
+
+- 🚀 **Instant Image Upload** (Click, Drag & Drop, or Paste from Clipboard)
+- 🔒 **Secure CDN Storage** (Vercel Blob)
+- 📤 **One-Click Sharing** (Copy CDN URL)
+- 🖼️ **Optimized Previews** (Next.js Image)
+- 📱 **Mobile Friendly & Responsive**
+- 🧑‍💻 **SEO Optimized** (Meta tags, OpenGraph, FAQ Schema, Sitemap)
+- 📝 **About & Blog Pages**
+- 🟢 **CI/CD with GitHub Actions**
+
+---
+
+## 🚦 Quick Start
 
 ```bash
+# 1. Install dependencies
+npm install
+
+# 2. Run locally
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
+# 3. Lint, type-check, and build
+npm run lint
+npx tsc --noEmit
+npm run build
+
+# 4. (Optional) Run tests
+npm test
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🛠️ Project Structure
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- `src/app/page.tsx` — Main upload UI
+- `src/app/about/page.tsx` — About page
+- `src/app/blog/page.tsx` — Blog page
+- `src/app/layout.tsx` — Global layout, SEO meta
+- `public/og-image.svg` — OpenGraph image
+- `.github/workflows/ci.yml` — GitHub Actions CI
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## 🧩 Tech Stack
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js](https://nextjs.org/)
+- [React](https://react.dev/)
+- [Vercel Blob Storage](https://vercel.com/docs/storage/vercel-blob)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [TypeScript](https://www.typescriptlang.org/)
+- [GitHub Actions](https://github.com/features/actions)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🌍 SEO & Social
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- Custom meta tags, OpenGraph, Twitter Card
+- FAQ & Organization JSON-LD Schema
+- Sitemap & robots.txt
+- OG image for rich sharing
+- Internal links (About, Blog, Sitemap)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first.
+
+## 👤 Author
+
+Created by [shivanshu814](https://github.com/shivanshu814)
+
+For support or feedback, open an issue or email: shivanshupathak814@gmail.com
