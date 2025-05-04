@@ -107,6 +107,19 @@ export default function Home() {
     }
   };
 
+  const handlePaste = (e: React.ClipboardEvent) => {
+    const items = e.clipboardData.items;
+    for (let i = 0; i < items.length; i++) {
+      const item = items[i];
+      if (item.kind === "file" && item.type.startsWith("image/")) {
+        const file = item.getAsFile();
+        if (file) {
+          handleUpload(file);
+        }
+      }
+    }
+  };
+
   return (
     <main className='min-h-screen bg-[#0A0A0F] p-8 relative overflow-hidden'>
       {/* Animated background elements */}
@@ -117,7 +130,10 @@ export default function Home() {
 
       <div className='max-w-4xl mx-auto relative'>
         <div className='text-center mb-12 relative'>
-          <h1 className='text-6xl font-bold text-white pb-2'>Image Upload</h1>
+          <h1 className='text-6xl font-bold text-white pb-2'>
+            SnapVault: Fast & Secure Image Upload & Cloud Storage
+          </h1>
+          <p className='text-lg text-[#6366F1] mt-2'>Created by shivanshu814</p>
           <div className='h-1 w-32 bg-[#6366F1] mx-auto mt-4 rounded-full'></div>
         </div>
 
@@ -132,6 +148,8 @@ export default function Home() {
             onDragLeave={handleDrag}
             onDragOver={handleDrag}
             onDrop={handleDrop}
+            onPaste={handlePaste}
+            tabIndex={0}
           >
             <label className='flex flex-col items-center justify-center w-full min-h-[400px] cursor-pointer p-8'>
               <div className='flex flex-col items-center justify-center space-y-6'>
@@ -161,6 +179,7 @@ export default function Home() {
                 onChange={handleFileChange}
                 className='hidden'
                 disabled={isUploading}
+                tabIndex={-1}
               />
             </label>
           </div>
@@ -201,7 +220,11 @@ export default function Home() {
               <div className='relative aspect-video rounded-2xl overflow-hidden border border-white/20 bg-black/20 backdrop-blur-xl group/image'>
                 <Image
                   src={uploadedImage}
-                  alt='Uploaded image'
+                  alt={
+                    uploadedImage
+                      ? `Uploaded image to SnapVault cloud storage: ${uploadedImage}`
+                      : "Uploaded image"
+                  }
                   fill
                   className='object-contain transform group-hover/image:scale-105 transition-transform duration-500'
                   sizes='(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw'
@@ -246,8 +269,129 @@ export default function Home() {
               </div>
             </div>
           )}
+          <p className='text-white/40 text-sm mt-4'>
+            Tip: You can also{" "}
+            <span className='text-[#6366F1] font-semibold'>paste an image</span>{" "}
+            from your clipboard here!
+          </p>
         </div>
       </div>
+
+      {/* FAQ Section for SEO */}
+      <section className='mt-20 max-w-3xl mx-auto bg-white/5 rounded-2xl p-8 border border-white/10'>
+        <h2 className='text-3xl font-bold text-[#6366F1] mb-6 text-center'>
+          Frequently Asked Questions
+        </h2>
+        <div className='space-y-6'>
+          <div>
+            <h3 className='text-xl font-semibold text-white'>
+              How do I upload an image?
+            </h3>
+            <p className='text-white/70'>
+              Click the upload area or drag and drop your image. Supported
+              formats: PNG, JPG, GIF up to 10MB.
+            </p>
+          </div>
+          <div>
+            <h3 className='text-xl font-semibold text-white'>
+              Is SnapVault free to use?
+            </h3>
+            <p className='text-white/70'>
+              Yes! SnapVault is completely free for uploading and sharing
+              images.
+            </p>
+          </div>
+          <div>
+            <h3 className='text-xl font-semibold text-white'>
+              How secure is my data?
+            </h3>
+            <p className='text-white/70'>
+              All images are stored securely and delivered via a fast CDN. Only
+              those with the link can access your image.
+            </p>
+          </div>
+          <div>
+            <h3 className='text-xl font-semibold text-white'>
+              Can I share my uploaded images?
+            </h3>
+            <p className='text-white/70'>
+              Absolutely! After upload, you get a unique CDN link to share
+              anywhere.
+            </p>
+          </div>
+          <div>
+            <h3 className='text-xl font-semibold text-white'>
+              Who created SnapVault?
+            </h3>
+            <p className='text-white/70'>
+              SnapVault was created by shivanshu814 to make image uploading and
+              sharing super easy and secure for everyone.
+            </p>
+          </div>
+        </div>
+      </section>
+      {/* FAQ & Organization Schema for SEO */}
+      <script type='application/ld+json' suppressHydrationWarning>{`
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "How do I upload an image?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Click the upload area or drag and drop your image. Supported formats: PNG, JPG, GIF up to 10MB."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Is SnapVault free to use?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Yes! SnapVault is completely free for uploading and sharing images."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "How secure is my data?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "All images are stored securely and delivered via a fast CDN. Only those with the link can access your image."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Can I share my uploaded images?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Absolutely! After upload, you get a unique CDN link to share anywhere."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Who created SnapVault?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "SnapVault was created by shivanshu814 to make image uploading and sharing super easy and secure for everyone."
+              }
+            }
+          ]
+        }
+      `}</script>
+      <script type='application/ld+json' suppressHydrationWarning>{`
+        {
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "SnapVault",
+          "url": "https://snapvault-vercel.vercel.app/",
+          "logo": "https://snapvault-vercel.vercel.app/og-image.svg",
+          "sameAs": [
+            "https://twitter.com/snapvault",
+            "https://github.com/snapvault"
+          ]
+        }
+      `}</script>
     </main>
   );
 }
